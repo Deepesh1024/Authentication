@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f8f9fa; }
+        .header { background: #28a745; color: white; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+        .nav { margin: 20px 0; }
+        .nav a { margin-right: 15px; padding: 10px 15px; background: #007bff; color: white; text-decoration: none; border-radius: 3px; }
+        .nav a:hover { background: #0056b3; }
+        .content { background: white; padding: 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>User Dashboard</h1>
+        <p>Welcome, {{ user_name }} ({{ email }})</p>
+        <small>Role: {{ role.title() }}</small>
+    </div>
+    
+    <div class="nav">
+        <a href="{{ url_for('user_dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('user_profile') }}">Profile</a>
+        <a href="{{ url_for('user_settings') }}">Settings</a>
+        <a href="{{ url_for('user_logout') }}">Logout</a>
+    </div>
+    
+    <div class="content">
+        <h2>Welcome to Your Dashboard</h2>
+        <p>This is your personal dashboard where you can manage your account and access user features.</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+            <div style="background: #e7f3ff; padding: 20px; border-radius: 5px; border-left: 4px solid #007bff;">
+                <h3>My Profile</h3>
+                <p>View and edit your profile information</p>
+                <a href="{{ url_for('user_profile') }}" style="color: #007bff; text-decoration: none;">Go to Profile →</a>
+            </div>
+            <div style="background: #f0f9ff; padding: 20px; border-radius: 5px; border-left: 4px solid #28a745;">
+                <h3>Account Settings</h3>
+                <p>Manage your account preferences</p>
+                <a href="{{ url_for('user_settings') }}" style="color: #28a745; text-decoration: none;">Go to Settings →</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

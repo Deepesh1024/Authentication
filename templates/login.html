@@ -1,0 +1,29 @@
+{% extends "back.html" %}
+{% block title %}Login - Speak Education{% endblock %}
+{% block content %}
+<div class="auth-card card">
+    <div class="auth-header">
+        <h2 class="mb-0">Speak Education</h2>
+        <p class="mb-0 mt-2">Login to Your Account</p>
+    </div>
+    <div class="card-body p-4">
+        <form method="POST">
+            <div class="mb-4">
+                <label for="email" class="form-label fw-bold">Email Address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="form-label fw-bold">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div class="d-grid mb-4">
+                <button type="submit" class="btn btn-primary btn-lg">Login</button>
+            </div>
+        </form>
+        <div class="text-center">
+            <p class="text-muted">Don't have credentials?</p>
+            <a href="{{ url_for('signin_page') }}" class="btn btn-outline-primary">Sign In Here</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

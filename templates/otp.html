@@ -1,0 +1,49 @@
+{% extends "back.html" %}
+{% block title %}Verify OTP - Speak Education{% endblock %}
+{% block content %}
+<div class="auth-card card">
+    <div class="auth-header">
+        <h2 class="mb-0">Speak Education</h2>
+        <p class="mb-0 mt-2">Enter OTP and Set Password</p>
+    </div>
+    <div class="card-body p-4">
+        <div class="alert alert-info mb-4">
+            <i class="fas fa-info-circle"></i>
+            OTP has been sent to <strong>{{ email }}</strong>
+        </div>
+        
+        <form method="POST">
+            <input type="hidden" name="email" value="{{ email }}">
+            
+            <div class="mb-4">
+                <label for="otp" class="form-label fw-bold">Enter OTP</label>
+                <input type="text" class="form-control" id="otp" name="otp" placeholder="Enter 6-digit code" maxlength="6" required>
+                <small class="form-text text-muted">Check your email for the verification code.</small>
+            </div>
+            
+            <div class="mb-4">
+                <label for="password" class="form-label fw-bold">Create Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Create a strong password" required>
+            </div>
+            
+            <div class="mb-4">
+                <label for="confirm_password" class="form-label fw-bold">Confirm Password</label>
+                <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
+            </div>
+            
+            <div class="d-grid mb-4">
+                <button type="submit" class="btn btn-primary btn-lg">Verify & Complete Sign-in</button>
+            </div>
+        </form>
+        
+        <div class="text-center">
+            <p class="text-muted">Didn't receive the OTP?</p>
+            <a href="{{ url_for('resend_otp', email=email) }}" class="btn btn-outline-secondary btn-sm">Resend OTP</a>
+        </div>
+        
+        <div class="text-center mt-3">
+            <a href="{{ url_for('signin_page') }}" class="text-muted">← Back to Sign-in</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
